@@ -1,0 +1,78 @@
+let num = [3, 4, 19,35, 2, 5, 9]
+
+func backward(_ s1: Int, _ s2: Int) -> Bool {
+    return s1 > s2
+}
+
+func onward(_ s1: Int, _ s2: Int) -> Bool {
+    return s1 < s2
+}
+
+var backward_num = num.sorted(by: backward)
+print(backward_num)
+
+var onward_num = num.sorted(by: onward)
+print(onward_num)
+
+func addFriends(names: String...) -> [String] {
+    var friendsArray = [String]()
+    
+    for name in names {
+        friendsArray.append(name)
+    }
+    
+    return friendsArray
+}
+
+let myFriends = addFriends(names: "Мария", "Александр", "Иван")
+print(myFriends)
+
+func sortFriendsByLetterCount(_ friends: [String]) -> [String] {
+    return friends.sorted { $0.count < $1.count }
+}
+
+let sortedFriends = sortFriendsByLetterCount(myFriends)
+print(sortedFriends)
+
+var friendsDictionary = [Int: String]()
+
+for friend in sortedFriends {
+    let key = friend.count
+    friendsDictionary[key] = friend
+}
+
+func printKeyValue(from dictionary: [Int: String], for key: Int) {
+    if let value = dictionary[key] {
+        print("Ключ: \(key), Значение: \(value)")
+    } else {
+        print("Ключ \(key) не найден в словаре.")
+    }
+}
+
+var numericArray: [Int] = [1, 4, 6]
+var stringArray: [String] = []
+
+func checkAndPrintArrays(_ : [String], _ : [Int]) {
+    if stringArray.isEmpty {
+        print("Строковый массив пуст. Добавляем значение.")
+        stringArray.append("Андрей")
+        print("Строковый массив после добавления: \(stringArray)")
+    } else {
+        print("Строковый массив: \(stringArray)")
+    }
+
+    if numericArray.isEmpty {
+        print("Числовой массив пуст. Добавляем значение.")
+        numericArray.append(3)
+        print("Числовой массив после добавления: \(numericArray)")
+    } else {
+        print("Числовой массив: \(numericArray)")
+    }
+}
+
+
+printKeyValue(from: friendsDictionary, for: 5)
+
+let emptyStringArray: [String] = []
+let emptyNumericArray: [Int] = []
+checkAndPrintArrays(emptyStringArray, emptyNumericArray)
